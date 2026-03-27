@@ -17,12 +17,7 @@
             --text-dim: #8892b0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -33,15 +28,14 @@
             overflow-x: hidden;
         }
 
-        /* --- High-End Vertical Header --- */
+        /* --- Sidebar --- */
         .sidebar {
             width: 100px;
             height: 100vh;
             background: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(20px);
             position: fixed;
-            left: 0;
-            top: 0;
+            left: 0; top: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -50,187 +44,62 @@
             border-right: 1px solid var(--glass-border);
         }
 
-        .sidebar-logo {
-            position: absolute;
-            top: 40px;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--accent-blue);
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-        }
-
+        .sidebar-logo { position: absolute; top: 40px; font-weight: 800; font-size: 1.8rem; color: var(--accent-blue); }
         .sidebar ul { list-style: none; }
         .sidebar ul li { margin: 30px 0; }
-        .sidebar ul li a {
-            color: var(--text-dim);
-            font-size: 1.4rem;
-            text-decoration: none;
-            transition: 0.4s;
-            display: block;
-        }
-
-        .sidebar ul li a:hover {
-            color: var(--accent-blue);
-            transform: translateY(-5px);
-            text-shadow: 0 0 10px var(--accent-blue);
-        }
+        .sidebar ul li a { color: var(--text-dim); font-size: 1.4rem; transition: 0.4s; text-decoration: none; }
+        .sidebar ul li a:hover { color: var(--accent-blue); transform: translateY(-5px); }
 
         /* --- Layout --- */
-        main {
-            margin-left: 100px;
-            width: calc(100% - 100px);
-        }
+        main { margin-left: 100px; width: calc(100% - 100px); }
+        .section { min-height: 100vh; padding: 80px 10%; display: flex; flex-direction: column; justify-content: center; }
 
-        .section {
-            min-height: 100vh;
-            padding: 80px 10%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        /* --- Hero --- */
+        .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+        .hero-text h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 30px; }
 
-        /* --- Eye-Catcher Intro --- */
-        .hero {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
+        .hero-img-box { position: relative; width: 100%; max-width: 400px; height: 500px; }
+        .img-main { width: 100%; height: 100%; object-fit: cover; border-radius: 30px; border: 1px solid var(--glass-border); position: relative; z-index: 2; }
+        .hero-img-box::before { content: ''; position: absolute; top: -15px; right: -15px; width: 100%; height: 100%; border: 2px solid var(--accent-blue); border-radius: 30px; z-index: 1; }
 
-        .hero-text h4 { color: var(--accent-blue); font-weight: 400; letter-spacing: 3px; margin-bottom: 15px; }
-        .hero-text h1 { font-size: 5rem; font-weight: 800; line-height: 1; margin-bottom: 25px; }
-        .hero-text p { font-size: 1.2rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 35px; }
-
-        .hero-img-box {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            height: 550px;
-        }
-
-        .img-main {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-
-        /* Decorative blue glows behind image */
-        .hero-img-box::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--accent-blue);
-            border-radius: 30px;
-            z-index: 1;
-            transition: 0.5s;
-        }
-
-        .hero-img-box:hover::before { top: 10px; right: 10px; }
-
-        /* --- Sections Design --- */
-        .section-header { margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.8rem; font-weight: 800; }
+        /* --- Cards & Grid --- */
+        .section-header { margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; }
         .section-header span { color: var(--accent-blue); }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
+        .category-title { margin: 40px 0 20px; font-size: 1.6rem; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
 
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; backdrop-filter: blur(10px); transition: 0.4s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent-blue); }
 
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-blue);
-        }
-
-        .card-photo-space {
-            width: 100%;
-            height: 200px;
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 15px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed var(--accent-blue);
-            color: var(--accent-blue);
-            font-size: 0.9rem;
-            overflow: hidden;
-        }
+        .card-photo-space { width: 100%; height: 180px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--glass-border); }
         .card-photo-space img { width: 100%; height: 100%; object-fit: cover; }
+        .aub-bg img { background: white; object-fit: contain; padding: 15px; }
 
-        .card h3 { color: var(--accent-blue); font-size: 1.5rem; margin-bottom: 15px; }
-        .card p { color: var(--text-dim); line-height: 1.6; }
+        .card h3 { color: var(--accent-blue); margin-bottom: 12px; font-size: 1.3rem; }
+        .card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px; }
+        
+        .card ul { list-style: none; margin-bottom: 20px; }
+        .card ul li { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 6px; display: flex; gap: 8px; }
+        .card ul li::before { content: "▹"; color: var(--accent-blue); }
 
-        /* --- Skills Section --- */
-        .skills-card {
-            background: linear-gradient(145deg, rgba(0,119,255,0.1), rgba(0,212,255,0.05));
-            border-radius: 30px;
-            padding: 50px;
-            border: 1px solid var(--glass-border);
-        }
+        .repo-link { text-decoration: none; color: var(--accent-blue); font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; margin-top: auto; }
+        .repo-link:hover { text-decoration: underline; }
 
+        /* --- Skills Styling --- */
+        .skills-card { background: linear-gradient(145deg, rgba(0,119,255,0.1), rgba(0,212,255,0.05)); border-radius: 30px; padding: 50px; border: 1px solid var(--glass-border); }
         .skill-group { margin-bottom: 30px; }
         .skill-group h4 { margin-bottom: 20px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
-
         .skill-tags { display: flex; flex-wrap: wrap; gap: 15px; }
-        .tag {
-            padding: 10px 25px;
-            background: var(--glass);
-            border: 1px solid var(--accent-blue);
-            color: var(--accent-blue);
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
+        .tag { padding: 10px 25px; background: var(--glass); border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .tag:hover { background: var(--accent-blue); color: #0a192f; }
 
-        /* --- Buttons --- */
-        .primary-btn {
-            padding: 18px 40px;
-            background: transparent;
-            border: 2px solid var(--accent-blue);
-            color: var(--accent-blue);
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            transition: 0.4s;
-        }
+        .primary-btn { padding: 15px 35px; background: transparent; border: 2px solid var(--accent-blue); color: var(--accent-blue); border-radius: 10px; text-decoration: none; font-weight: 700; transition: 0.4s; display: inline-block; }
+        .primary-btn:hover { background: var(--accent-blue); color: #0a192f; }
 
-        .primary-btn:hover {
-            background: var(--accent-blue);
-            color: #0a192f;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-img-box { margin: 0 auto; width: 300px; height: 400px; }
-            .sidebar { width: 70px; }
-            main { margin-left: 70px; }
-        }
+        @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .sidebar { width: 60px; } main { margin-left: 60px; } }
     </style>
 </head>
 <body>
@@ -240,7 +109,6 @@
         <ul>
             <li><a href="#home"><i class="fas fa-home"></i></a></li>
             <li><a href="#education"><i class="fas fa-graduation-cap"></i></a></li>
-            <li><a href="#trainings"><i class="fas fa-award"></i></a></li>
             <li><a href="#projects"><i class="fas fa-code"></i></a></li>
             <li><a href="#skills"><i class="fas fa-brain"></i></a></li>
             <li><a href="#contact"><i class="fas fa-envelope"></i></a></li>
@@ -250,14 +118,14 @@
     <main>
         <section id="home" class="section hero">
             <div class="hero-text">
-                <h4>COMPUTER SCIENCE & AI</h4>
+                <h4 style="color:var(--accent-blue); letter-spacing: 2px; margin-bottom: 10px;">COMPUTER SCIENCE & AI</h4>
                 <h1>Mohammad Barakeh</h1>
                 <p>Focused on the synergy between Neuroscience and Artificial Intelligence. I develop software that solves complex problems, from autonomous robots to banking logic, currently studying at <strong>AUB</strong>.</p>
                 <a href="#projects" class="primary-btn">Explore Projects</a>
             </div>
             <div class="hero-image">
                 <div class="hero-img-box">
-                    <img src="your-main-photo.jpg" alt="Mohammad Barakeh" class="img-main">
+                    <img src="WhatsApp Image 2026-03-27 at 15.09.44.jpeg" alt="Mohammad Barakeh" class="img-main">
                 </div>
             </div>
         </section>
@@ -268,50 +136,72 @@
             </div>
             <div class="grid-container">
                 <div class="card">
-                    <div class="card-photo-space">
-                        <img src="aub-logo.jpg" alt="AUB"> </div>
+                    <div class="card-photo-space aub-bg">
+                        <img src="images.jpeg" alt="American University of Beirut">
+                    </div>
                     <h3>American University of Beirut</h3>
                     <p><strong>B.S. in Computer Science</strong></p>
-                    <p></p>
-                    <p style="margin-top:15px; font-size: 0.8rem; letter-spacing: 1px;">JAN 2025 — DEC 2028</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="trainings" class="section">
-            <div class="section-header">
-                <h2>Trainings & <span>Awards</span></h2>
-            </div>
-            <div class="grid-container">
-                <div class="card">
-                    <div class="card-photo-space">
-                        <img src="bootcamp-photo.jpg" alt="AI Bootcamp"> </div>
-                    <h3>AI & Machine Learning Bootcamp</h3>
-                    <p>Intensive certification program focusing on the mathematical foundations and implementation of modern neural networks.</p>
-                    <p style="margin-top:15px; font-size: 0.8rem; color:var(--accent-blue)">DEC 2025 — JAN 2026</p>
+                    <p>Pursuing rigorous coursework in software engineering, algorithms, and systems design.</p>
+                    <p style="margin-top:15px; font-size: 0.8rem; letter-spacing: 1px; color: var(--accent-blue);">JAN 2025 — DEC 2028</p>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="section">
             <div class="section-header">
-                <h2>Featured <span>Projects</span></h2>
+                <h2>Technical <span>Projects</span></h2>
             </div>
+
+            <h3 class="category-title"><i class="fas fa-network-wired"></i> Systems & Networking Programming</h3>
+            <div class="grid-container" style="margin-bottom: 50px;">
+                <div class="card">
+                    <div class="card-photo-space"><img src="dots-boxes.jpg" alt="Dots and Boxes"></div>
+                    <h3>Dots and Boxes Game</h3>
+                    <p>Strategic game logic implemented in C. Developed a custom struct-based coordinate system for a 5x6 grid, focusing on memory efficiency and automated win-state detection.</p>
+                </div>
+            </div>
+
+            <h3 class="category-title"><i class="fas fa-robot"></i> Robotics & Hardware</h3>
+            <div class="grid-container" style="margin-bottom: 50px;">
+                <div class="card">
+                    <div class="card-photo-space"><img src="fire-robot.jpg" alt="Fire Robot"></div>
+                    <h3>Fire Detector Robot</h3>
+                    <p>Autonomous hardware integration using sensors and Python. Designed for real-time hazard detection and obstacle navigation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-photo-space"><img src="gesture.jpg" alt="Gesture Controller"></div>
+                    <h3>Arduino Gesture Controller</h3>
+                    <p>Touchless laptop interface using IR sensors to map hand movements to system-level media and volume controls.</p>
+                </div>
+            </div>
+
+            <h3 class="category-title"><i class="fas fa-laptop-code"></i> Learning Projects (Java)</h3>
             <div class="grid-container">
                 <div class="card">
-                    <div class="card-photo-space"><img src="fire-robot.jpg" alt="Robot"></div>
-                    <h3>Fire Detector Robot</h3>
-                    <p>Autonomous hardware-software integration using sensors and Python-based logic for fire hazard detection.</p>
+                    <div class="card-photo-space"><img src="parking.jpg" alt="Parking System"></div>
+                    <h3>LOT Parking System</h3>
+                    <p>Java system managing vehicle slots with advanced sorting and FIFO retrieval logic.</p>
+                    <ul>
+                        <li>TreeSet for arrival-based sorting.</li>
+                        <li>HashMap & Queue for FIFO car retrieval.</li>
+                        <li>Persistence: Text file activity logging.</li>
+                    </ul>
+                    <a href="https://github.com/Moh-lab-sys/Learning-Projects/tree/main/PROJECTS/java/LOT%20parking%20system" target="_blank" class="repo-link">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
                 </div>
+
                 <div class="card">
-                    <div class="card-photo-space"><img src="gesture.jpg" alt="Gesture"></div>
-                    <h3>Arduino Gesture Controller</h3>
-                    <p>Touchless laptop controller using Arduino sensors to manage system volume and media through hand gestures.</p>
-                </div>
-                <div class="card">
-                    <div class="card-photo-space"><img src="bank.jpg" alt="Banking"></div>
-                    <h3>Banking Management System</h3>
-                    <p>A full-scale simulation of banking transactions, account creation, and security logic using Java.</p>
+                    <div class="card-photo-space"><img src="bank.jpg" alt="Banking System"></div>
+                    <h3>Online Banking Simulation</h3>
+                    <p>Designed a Banking Management System in Java for account management and transactions.</p>
+                    <ul>
+                        <li>Core operations: deposits, withdrawals, and creation.</li>
+                        <li>Logic-driven backend for financial auditing.</li>
+                    </ul>
+                    <a href="https://github.com/Moh-lab-sys/Learning-Projects/tree/main/PROJECTS/java/BankSystem" target="_blank" class="repo-link">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
                 </div>
             </div>
         </section>
@@ -327,21 +217,23 @@
                         <div class="tag">Java</div>
                         <div class="tag">Python</div>
                         <div class="tag">C++</div>
+                        <div class="tag">C</div>
                     </div>
                 </div>
                 <div class="skill-group">
                     <h4><i class="fas fa-microchip" style="color:var(--accent-blue)"></i> Specialization & Tools</h4>
                     <div class="skill-tags">
-                        <div class="tag">Machine Learning Fundamentals</div>
-                        <div class="tag">Arduino Systems</div>
-                        <div class="tag">Microsoft Office</div>
+                        <div class="tag">Machine Learning</div>
+                        <div class="tag"></div>
+                        <div class="tag">Data Structures</div>
+                        <div class="tag">OOP</div>
                     </div>
                 </div>
                 <div class="skill-group">
                     <h4><i class="fas fa-language" style="color:var(--accent-blue)"></i> Languages</h4>
                     <div class="skill-tags">
-                        <div class="tag">English</div>
-                        <div class="tag">Arabic</div>
+                        <div class="tag">English (Fluent)</div>
+                        <div class="tag">Arabic (Native)</div>
                     </div>
                 </div>
             </div>
@@ -351,11 +243,10 @@
             <div class="section-header">
                 <h2>Let's <span>Connect</span></h2>
             </div>
-            <div style="max-width: 600px; margin: 0 auto;">
-                <p style="margin-bottom: 40px; color: var(--text-dim);">I am based in <strong>Tripoli, Lebanon</strong> and always open to discussing new AI projects or software opportunities.</p>
-                <h3 style="margin-bottom: 10px;">barakim25@gmail.com</h3>
-                <h3 style="margin-bottom: 40px;">+961 71 644 937</h3>
-                <a href="https://www.linkedin.com/in/mohammad-barakeh-415889224/" target="_blank" class="primary-btn">View LinkedIn Profile</a>
+            <div style="max-width: 500px; margin: 0 auto;">
+                <h3 style="margin-bottom: 10px; color: var(--accent-blue);">barakim25@gmail.com</h3>
+                <h3 style="margin-bottom: 30px;">+961 71 644 937</h3>
+                <a href="https://www.linkedin.com/in/mohammad-barakeh-415889224/" target="_blank" class="primary-btn">LinkedIn Profile</a>
             </div>
         </section>
     </main>
